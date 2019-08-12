@@ -1,0 +1,96 @@
+﻿body {
+  background-color: #fafafa !important;
+}
+.mainNav {
+  background-color: white !important;
+  color: black !important;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 4px 2px -2px grey;
+  z-index: 1000;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.mainNav .md-toolbar-tools {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px;
+}
+.editModal {
+  max-width: 80%;
+  min-width: 65%;
+}
+.m-t-5 {
+  margin-top: 5px;
+}
+.m-t-10 {
+  margin-top: 10px;
+}
+.m-t-15 {
+  margin-top: 15px;
+}
+.m-t-20 {
+  margin-top: 20px;
+}
+.m-t-25 {
+  margin-top: 25px;
+}
+.m-t-65 {
+  margin-top: 65px;
+}
+.red {
+  background: #ff8a80;
+}
+.green {
+  background: #b9f6ca;
+}
+.blue {
+  background: #80d8ff;
+}
+.teal {
+  background: #84ffff;
+}
+.yellow {
+  background: #ffff8d;
+}
+.navtiles md-grid-tile {
+  cursor: pointer;
+}
+.navtiles md-grid-tile-footer {
+  background: rgba(0, 0, 0, 0.68);
+  height: 36px;
+  text-align: center;
+}
+.navtiles figcaption {
+  width: 100%;
+}
+.tile-image {
+  width: 65%;
+  padding-bottom: 35px;
+}
+.navtiles md-grid-tile-footer figcaption h3 {
+  margin: 0;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+}
+.editUserSheet {
+  height: 500px;
+}

@@ -1,0 +1,76 @@
+﻿<md-dialog class="editUserSheet" style="width:90%;height:auto;">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span flex class="md-headline md-subhead">Edit {{client.Name}}</span>
+            <div flex></div>
+            <md-button class="md-icon-button" aria-label="Close" ng-click="cancel()">
+                <md-icon md-svg-icon="/Icons/baseline-close-24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div layout="row" layout-align="center center">
+            <div flex="40">
+                <div layout="column">
+                    <md-input-container>
+                        <label>Company Name</label>
+                        <input type="text" ng-model="client.Name" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Primary Contact</label>
+                        <input type="text" ng-model="client.PrimaryContact" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Primary Phone</label>
+                        <input type="tel" ng-model="client.Phone" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Extension</label>
+                        <input type="tel" ng-model="client.PrimaryPhone" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Fax</label>
+                        <input type="tel" ng-model="client.PrimaryPhone" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Primary Location</label>
+                        <input type="text" ng-model="client.Address.Name" />
+                    </md-input-container>
+                </div>
+            </div>
+            <div flex="40">
+                <div layout="column">
+                    <md-input-container>
+                        <label>Address 1</label>
+                        <input type="text" ng-model="client.Address.Address1" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Address 2</label>
+                        <input type="text" ng-model="client.Address.Address2" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>City</label>
+                        <input type="text" ng-model="client.Address.City" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>State</label>
+                        <input type="text" ng-model="client.Address.State" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Zip</label>
+                        <input type="text" ng-model="client.Address.Zip" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Country</label>
+                        <input type="text" ng-model="client.Address.Country" />
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+
+        <md-card-actions layout="row" layout-align="end-center">
+            <button class="md-button md-raised md-accent" ng-click="save()">Save Changes</button>
+        </md-card-actions>
+
+    </md-content>
+</md-dialog>

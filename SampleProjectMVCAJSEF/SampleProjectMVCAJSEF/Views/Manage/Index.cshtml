@@ -1,0 +1,31 @@
+﻿@model SampleProjectMVCAJSEF.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+<div layout="row" layout-align="center center">
+    <md-card flex-gt-xs="30" flex-xs="90">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span flex class="md-headline text-center">Account Settings</span>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <dl class="dl-horizontal">
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
+                </dd>
+            </dl>
+        </md-card-content>
+    </md-card>
+
+</div>

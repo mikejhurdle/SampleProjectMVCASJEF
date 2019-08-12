@@ -1,0 +1,54 @@
+﻿<md-dialog class="editModal">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span flex class="md-headline md-subhead" >Edit {{user.Email}}</span>
+            <div flex></div>
+            <md-button class="md-icon-button" aria-label="Close" ng-click="cancel()">
+                <md-icon md-svg-icon="/Icons/baseline-close-24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div layout="row" layout-align="center center">
+            <div flex="80" layout="row" layout-align="center center">
+                <md-input-container flex="50">
+                    <label>Email</label>
+                    <input type="email" ng-model="user.Email" />
+                </md-input-container>
+                <md-input-container flex="50">
+                    <md-checkbox ng-model="user.Active">Active</md-checkbox>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row" layout-align="center center">
+            <div flex="80" layout="row" layout-align="center center">
+                <md-input-container flex="50">
+                    <label>First Name</label>
+                    <input type="text" ng-model="user.FirstName" />
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Last Name</label>
+                    <input type="text" ng-model="user.LastName" />
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row" layout-align="center center">
+            <div flex="80" layout="row" layout-align="center center">
+                <md-input-container flex="50">
+                    <label>Phone</label>
+                    <input type="tel" ng-model="user.Phone" />
+                </md-input-container>
+
+                <md-input-container flex="50">
+                    <md-select ng-model="user.Role">
+                        <md-option ng-repeat="role in Roles" ng-value="role">{{role}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <md-card-actions layout="row" layout-align="end-center">
+            <button class="md-button md-raised md-accent" ng-click="save()">Save Changes</button>
+        </md-card-actions>
+
+    </md-content>
+</md-dialog>

@@ -1,0 +1,93 @@
+﻿<script src="~/AngularApp/Services/navigationService.js"></script>
+<script src="~/AngularApp/Services/userService.js"></script>
+<script src="~/AngularApp/Controllers/manageUsersController.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<div ng-controller="ManageUsersController as uc" class="md-padding" ng-cloak>
+    <div layout="row">
+        <span class="md-headline" style="cursor:pointer; color:rgb(83,109,254);" ng-click="uc.Navigate('/')"><u>Home</u></span>
+        <span class="md-headline">-></span>
+        <span class="md-headline" style="cursor:pointer; color:rgb(83,109,254);" ng-click="uc.Navigate('/Admin')"><u>Admin</u></span>
+        <span class="md-headline">-></span>
+        <span class="md-headline">Manage Users</span>
+    </div>
+    <div layout="row" layout-align="center center">
+        <md-content flex="90">
+            <div layout="row" layout-align="center center">
+                <md-card flex="85">
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <span flex class="md-headline text-center">Manage users</span>
+                        </div>
+                    </md-toolbar>
+                    <md-card-content>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Search</label>
+                                <input type="text" ng-model="uc.TableSearch">
+                            </md-input-container>
+                            <span flex></span>
+                            <md-input-container>
+                                <md-button class="md-raised md-accent" ng-click="uc.EditUser()">Add User</md-button>
+                            </md-input-container>
+                        </div>
+                        <div layout="row" layout-align="center center" class="m-t-15">
+                            <table class="table table-condensed table-striped table-bordered table-hover" id="sample-results">
+                                <thead class="clt-header">
+                                    <tr>
+                                        <th ng-click="uc.sort('User.Email')" ng-mouseover="uc.hoverIn('Email')" ng-mouseleave="uc.hoverOut()">
+                                            Email
+                                            <img ng-show="uc.sortKey=='User.Email'|| uc.MouseOver == 'Email'" ng-class="{'chev-up':uc.reverse,'chev-down':!uc.reverse}" />
+                                        </th>
+                                        <th ng-click="uc.sort('User.FirstName')" ng-mouseover="uc.hoverIn('FirstName')" ng-mouseleave="uc.hoverOut()">
+                                            First Name
+                                            <img ng-show="uc.sortKey=='FirstName'|| uc.MouseOver == 'UserName'" ng-class="{'chev-up':uc.reverse,'chev-down':!uc.reverse}" />
+                                        </th>
+                                        <th ng-click="uc.sort('User.LastName')" ng-mouseover="uc.hoverIn('LastName')" ng-mouseleave="uc.hoverOut()">
+                                            Last Name
+                                            <img ng-show="uc.sortKey=='User.LastName'|| uc.MouseOver == 'LastName'" ng-class="{'chev-up':uc.reverse,'chev-down':!uc.reverse}" />
+                                        </th>
+                                        <th ng-click="uc.sort('User.Phone')" ng-mouseover="uc.hoverIn('Phone')" ng-mouseleave="uc.hoverOut()">
+                                            Phone
+                                            <img ng-show="uc.sortKey=='Phone'|| uc.MouseOver == 'Phone'" ng-class="{'chev-up':uc.reverse,'chev-down':!uc.reverse}" />
+                                        </th>
+                                        <th ng-click="uc.sort('User.Role')" ng-mouseover="uc.hoverIn('Role')" ng-mouseleave="uc.hoverOut()">
+                                            User Level
+                                            <img ng-show="uc.sortKey=='Role'|| uc.MouseOver == 'Role'" ng-class="{'chev-up':uc.reverse,'chev-down':!uc.reverse}" />
+                                        </th>
+                                        <th ng-click="uc.sort('User.Active')" ng-mouseover="uc.hoverIn('Active')" ng-mouseleave="uc.hoverOut()" width="13%">
+                                            Active
+                                            <img ng-show="uc.sortKey=='Active'|| uc.MouseOver == 'Active'" ng-class="{'fa-angle-up':uc.reverse,'fa-angle-down':!uc.reverse}" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="user in uc.UserList|orderBy:uc.sortKey:uc.reverse|filter:uc.TableSearch|itemsPerPage:5" style="cursor:pointer;" ng-click="uc.EditUser(user)">
+                                        <td>{{user.Email}}</td>
+                                        <td>{{user.FirstName}}</td>
+                                        <td>{{user.LastName}}</td>
+                                        <td>{{user.Phone}}</td>
+                                        <td>{{user.Role}}</td>
+                                        <td>{{user.Active}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div layout="row">
+                            <div flex="65"></div>
+                            <dir-pagination-controls max-size="5"
+                                                     direction-links="true"
+                                                     boundary-links="true">
+                            </dir-pagination-controls>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

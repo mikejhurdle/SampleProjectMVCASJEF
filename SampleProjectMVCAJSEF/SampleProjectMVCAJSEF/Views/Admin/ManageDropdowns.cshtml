@@ -1,0 +1,87 @@
+﻿<script src="~/AngularApp/Services/dropdownService.js"></script>
+<script src="~/AngularApp/Controllers/manageDropdownController.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.site-button').click(function () {
+            $(".site-button").removeClass("selectedButton");
+            $(this).addClass("selectedButton");
+        });
+    });
+</script>
+
+<div ng-controller="ManageDropdownController as mdc" class="md-padding" ng-cloak>
+    <div layout="row">
+        <span class="md-headline" style="cursor:pointer; color:rgb(83,109,254);" ng-click="mdc.Navigate('/')"><u>Home</u></span>
+        <span class="md-headline">-></span>
+        <span class="md-headline" style="cursor:pointer; color:rgb(83,109,254);" ng-click="mdc.Navigate('/Admin')"><u>Admin</u></span>
+        <span class="md-headline">-></span>
+        <span class="md-headline">Manage Dropdowns</span>
+    </div>
+    <form accessible-form name="projectForm">
+
+
+        <md-card class="m-t-15">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span flex class="md-headline text-center">Manage Dropdowns</span>
+                </div>
+            </md-toolbar>
+            <md-card-content>
+                <md-card-title-text>
+                    <span class="md-headline">Select Dropdown to Manage</span>
+                </md-card-title-text>
+
+                <div layout="row" class="m-t-5">
+                    <md-input-container flex="40">
+                        <label>Dropdown Type</label>
+                        <md-select name="type" ng-model="mdc.selectedDD">
+                            <md-option ng-repeat="ddtype in mdc.DropdownTypes" ng-value="ddtype">{{ddtype.Name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    @*<md-select name="type" ng-model="mdc.selectedDD" ng-options="dropdown.Name for dropdown in mdc.DropdownTypes" class="form-control">
+                            <md-option style="display:none" value="">Select a type</md-option>
+                        </md-select>*@
+                </div>
+                <div layout="column" class="m-t-15" ng-show="mdc.selectedDD">
+                    <md-card-title-text>
+                        <span class="md-headline">Edit {{mdc.selectedDD.Name}} Dropdown</span>
+                    </md-card-title-text>
+                    <input type="text" class="form-control m-t-5 long-input" ng-model="mdc.selectedItem.Name" placeholder="Dropdown Item" />
+                    <div layout="row" class="m-t-5" layout-align="space-between center">
+                        <button class="md-button md-raised md-primary" ng-disabled="mdc.selectedItem.Name.length == 0 || mdc.countChecked() != 0" ng-click="mdc.saveDropdownValue()">Add</button>
+                        <button class="md-button md-raised md-primary" ng-disabled="mdc.countChecked() != 1" ng-click="mdc.saveDropdownValue()">Save</button>
+                    </div>
+                    <md-list style="padding-top:0px;" class="scrollablelist m-t-15">
+                        <md-list-item class="" ng-class="{'selectedlistitem': item.Checked}" ng-class-even="'even'" ng-class-odd="'odd'" ng-repeat="item in mdc.selectedDD.Values | filter: {Active: 'True'}">
+                            <md-checkbox ng-change="mdc.selectItem()" class="md-secondary black" ng-model="item.Checked"></md-checkbox>
+                            <p> {{ item.Name }} </p>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                    <div layout="row" layout-align="end center" class="m-t-15">
+                        <button class="md-button md-raised md-primary" ng-disabled="mdc.countChecked() == 0" ng-click="mdc.removeDropdownItems()">Remove</button>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card ng-show="mdc.selectedDD">
+            <md-card-content>
+                <md-card-title-text>
+                    <span class="md-headline">Dropdown Preview</span>
+                    <br />
+                    <span class="md-subhead m-t-5">{{mdc.selectedDD.Name}}</span>
+                </md-card-title-text>
+                <div layout="row" layout-align="center center">
+                    <select name="type" ng-options="item.Name for item in mdc.selectedDD.Values | filter: {Active: 'True'}" ng-model="mdc.Preview" class="form-control m-t-5" tabindex="7">
+                        <option value="" disabled>Select Value</option>
+                    </select>
+                </div>
+
+            </md-card-content>
+        </md-card>
+
+
+    </form>
+</div>
